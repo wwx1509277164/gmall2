@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.gmall.product.mapper.BaseAttrInfoMapper">
+    <!--BaseAttrInfo getAttrValueList(Long attrId);-->
+    <resultMap id="getAttrValueListMap" type="BaseAttrInfo">
+        <id column="id" property="id"></id>
+        <collection property="attrValueList" column="vid" ofType="BaseAttrValue">
+            <id property="id" column="vid"></id>
+        </collection>
+    </resultMap>
+    <select id="getAttrValueList" resultMap="getAttrValueListMap">
+        SELECT
+            bai.id,
+            bai.attr_name,
+            bai.category_id,
+            bai.category_level,
+            bav.id vid,
+            bav.value_name,
+            bav.attr_id
+        FROM base_attr_info bai
+        INNER JOIN base_attr_value bav on bai.id = bav.attr_id
+        WHERE bai.id = #{attrId}
+    </select>
+</mapper>

@@ -1,15 +1,14 @@
 package com.atguigu.gmall.product.service.impl;
 
-import com.atguigu.gmall.model.product.BaseCategory1;
-import com.atguigu.gmall.model.product.BaseCategory2;
-import com.atguigu.gmall.model.product.BaseCategory3;
-import com.atguigu.gmall.product.mapper.BaseCategory1Mapper;
-import com.atguigu.gmall.product.mapper.BaseCategory2Mapper;
-import com.atguigu.gmall.product.mapper.BaseCategory3Mapper;
+import com.atguigu.gmall.model.product.*;
+import com.atguigu.gmall.product.mapper.*;
 import com.atguigu.gmall.product.service.ManagerService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -25,6 +24,12 @@ public class ManagerServiceImpl implements ManagerService {
     BaseCategory2Mapper baseCategory2Mapper;
     @Autowired
     BaseCategory3Mapper baseCategory3Mapper;
+    @Autowired
+    BaseAttrInfoMapper baseAttrInfoMapper;
+    @Autowired
+    BaseAttrValueMapper baseAttrValueMapper;
+    @Autowired
+    SpuInfoMapper spuInfoMapper;
     //查询三级分类的
     @Override
     public List<BaseCategory1> getCategory1() {
@@ -38,5 +43,104 @@ public class ManagerServiceImpl implements ManagerService {
     public List<BaseCategory3> getCategory3(Long category2Id) {
         return baseCategory3Mapper.selectList(new QueryWrapper<BaseCategory3>().eq("category2_id",category2Id));
 
+    }
+    //查询属性值
+    @Override
+    public List<BaseAttrInfo> attrInfoList(Long category1Id, Long category2Id, Long category3Id) {
+        QueryWrapper<BaseAttrInfo> wrapper = new QueryWrapper<>();
+        if (category3Id==null){
+            if (category2Id==null){
+                wrapper.eq("category_id",category1Id);
+            }else {
+                wrapper.eq("category_id",category2Id);
+            }
+        }else {
+            wrapper.eq("category_id",category3Id);
+        }
+        List<BaseAttrInfo> baseAttrInfoList = baseAttrInfoMapper.selectList(wrapper);
+        return baseAttrInfoList;
+    }
+    //添加或者修改属性和属性值
+    @Override
+    public void saveAttrInfo(BaseAttrInfo baseAttrInfo) {
+        if (StringUtils.isEmpty(baseAttrInfo.getId())) {
+            baseAttrInfoMapper.insert(baseAttrInfo);
+        }else {
+            baseAttrInfoMapper.updateById(baseAttrInfo);
+        }
+        baseAttrValueMapper.delete(new QueryWrapper<BaseAttrValue>().eq("attr_id",baseAttrInfo.getId()));
+        List<BaseAttrValue> attrValueList = baseAttrInfo.getAttrValueList();
+        for (BaseAttrValue baseAttrValue : attrValueList) {
+            baseAttrValue.setAttrId(baseAttrInfo.getId());
+            baseAttrValueMapper.insert(baseAttrValue);
+        }
+    }
+    //根据id获取属性值
+    @Override
+    public BaseAttrInfo getAttrValueList(Long attrId) {
+        BaseAttrInfo baseAttrInfo = baseAttrInfoMapper.getAttrValueList(attrId);
+        System.out.println(baseAttrInfo);
+        return baseAttrInfo;
+    }
+
+    @Override
+    public IPage<SpuInfo> getSpuByPage(Long page, Long limit,Long id) {
+        Page<SpuInfo> p = new Page<>(page,limit);
+        IPage<SpuInfo> iPage = spuInfoMapper.selectPage(p, new QueryWrapper<SpuInfo>().eq("category3_id",id));
+        return iPage;
+    }
+    @Autowired
+    BaseSaleAttrMapper baseSaleAttrMapper;
+    @Autowired
+    BaseTrademarkMapper baseTrademarkMapper;
+    @Override
+    public List<BaseSaleAttr> baseSaleAttrList() {
+      return baseSaleAttrMapper.selectList(null);
+    }
+
+    @Override
+    public List<BaseTrademark> getTrademarkList() {
+        return baseTrademarkMapper.selectList(null);
+    }
+
+    @Autowired
+    SpuImageMapper spuImageMapper;
+    @Autowired
+    SpuSaleAttrMapper spuSaleAttrMapper;
+    @Autowired
+    SpuSaleAttrValueMapper spuSaleAttrValueMapper;
+    @Override
+    public void saveSpuInfo(SpuInfo spuInfo) {
+        //保存spu
+        spuInfoMapper.insert(spuInfo);
+        //保存照片
+        List<SpuImage> spuImageList = spuInfo.getSpuImageList();
+        for (SpuImage spuImage : spuImageList) {
+            spuImage.setSpuId(spuInfo.getId());
+            spuImageMapper.insert(spuImage);
+        }
+        //保存属性
+        List<SpuSaleAttr> spuSaleAttrList = spuInfo.getSpuSaleAttrList();
+        for (SpuSaleAttr spuSaleAttr : spuSaleAttrList) {
+            spuSaleAttr.setSpuId(spuInfo.getId());
+            spuSaleAttrMapper.insert(spuSaleAttr);
+            //保存属性值
+            List<SpuSaleAttrValue> spuSaleAttrValueList = spuSaleAttr.getSpuSaleAttrValueList();
+            for (SpuSaleAttrValue spuSaleAttrValue : spuSaleAttrValueList) {
+                spuSaleAttrValue.setSpuId(spuInfo.getId());
+                spuSaleAttrValue.setSaleAttrName(spuSaleAttr.getSaleAttrName());
+                spuSaleAttrValueMapper.insert(spuSaleAttrValue);
+            }
+        }
+    }
+
+    @Override
+    public List<SpuImage> spuImageList(Long spuId) {
+        return spuImageMapper.selectList(new QueryWrapper<SpuImage>().eq("spu_id",spuId));
+    }
+
+    @Override
+    public List<SpuSaleAttr> spuSaleAttrList(Long spuId) {
+        return spuSaleAttrMapper.spuSaleAttrList(spuId);
     }
 }
