@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -142,5 +144,92 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public List<SpuSaleAttr> spuSaleAttrList(Long spuId) {
         return spuSaleAttrMapper.spuSaleAttrList(spuId);
+    }
+    @Autowired
+    SkuInfoMapper skuInfoMapper;
+    @Autowired
+    SkuAttrValueMapper skuAttrValueMapper;
+    @Autowired
+    SkuSaleAttrValueMapper skuSaleAttrValueMapper;
+    @Autowired
+    SkuImageMapper skuImageMapper;
+    @Override
+    public void saveSkuInfo(SkuInfo skuInfo) {
+        //保存skuInfo
+        skuInfoMapper.insert(skuInfo);
+        //保存sku照片
+        List<SkuImage> skuImageList = skuInfo.getSkuImageList();
+        for (SkuImage skuImage : skuImageList) {
+            skuImage.setSkuId(skuInfo.getId());
+            skuImageMapper.insert(skuImage);
+        }
+        //保存平台属性关联表
+        List<SkuAttrValue> skuAttrValueList = skuInfo.getSkuAttrValueList();
+        for (SkuAttrValue skuAttrValue : skuAttrValueList) {
+            skuAttrValue.setSkuId(skuInfo.getId());
+            skuAttrValueMapper.insert(skuAttrValue);
+        }
+        List<SkuSaleAttrValue> skuSaleAttrValueList = skuInfo.getSkuSaleAttrValueList();
+        skuSaleAttrValueList.forEach(skuSaleAttrValue -> {
+            //外键 skuID
+            skuSaleAttrValue.setSkuId(skuInfo.getId());
+            //外键 spuId
+            skuSaleAttrValue.setSpuId(skuInfo.getSpuId());
+            //保存
+            skuSaleAttrValueMapper.insert(skuSaleAttrValue);
+        });
+    }
+
+    @Override
+    public IPage<SkuInfo> getSkuByPage(Long page, Long limit) {
+        Page<SkuInfo> skuInfoPage = new Page<>(page, limit);
+        IPage<SkuInfo> p = skuInfoMapper.selectPage(skuInfoPage, null);
+        return p;
+    }
+
+    @Override
+    public void onSale(Long skuId) {
+        SkuInfo skuInfo = skuInfoMapper.selectById(skuId);
+        skuInfo.setIsSale(1);
+        skuInfoMapper.updateById(skuInfo);
+    }
+
+    @Override
+    public void cancelSale(Long skuId) {
+        SkuInfo skuInfo = skuInfoMapper.selectById(skuId);
+        skuInfo.setIsSale(0);
+        skuInfoMapper.updateById(skuInfo);
+    }
+
+    @Override
+    public SkuInfo getSkuInfo(Long skuId) {
+        SkuInfo skuInfo = skuInfoMapper.selectById(skuId);
+        List<SkuImage> skuImageList = skuImageMapper.selectList(new QueryWrapper<SkuImage>().eq("sku_id", skuId));
+        skuInfo.setSkuImageList(skuImageList);
+        return skuInfo;
+    }
+
+    @Autowired
+    private BaseCategoryViewMapper baseCategoryViewMapper;
+
+    @Override
+    public BaseCategoryView getCategoryViewByCategory3Id(Long category3Id) {
+        return baseCategoryViewMapper.selectOne(new QueryWrapper<BaseCategoryView>().eq("category3_id",category3Id));
+    }
+
+    @Override
+    public BigDecimal getSkuPrice(Long skuId) {
+        return skuInfoMapper.selectById(skuId).getPrice();
+    }
+
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId) {
+        List<SpuSaleAttr> spuSaleAttrList = spuSaleAttrMapper.getSpuSaleAttrListCheckBySku(skuId,spuId);
+        return spuSaleAttrList;
+    }
+
+    @Override
+    public Map getSkuValueIdsMap(Long spuId) {
+        return skuSaleAttrValueMapper.getSkuValueIdsMap(spuId);
     }
 }

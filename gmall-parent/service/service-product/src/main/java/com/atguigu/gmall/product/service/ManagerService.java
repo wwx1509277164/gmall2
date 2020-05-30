@@ -3,7 +3,9 @@ package com.atguigu.gmall.product.service;
 import com.atguigu.gmall.model.product.*;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -32,4 +34,22 @@ public interface ManagerService {
     List<SpuImage> spuImageList(Long spuId);
 
     List<SpuSaleAttr> spuSaleAttrList(Long spuId);
+
+    void saveSkuInfo(SkuInfo skuInfo);
+
+    IPage<SkuInfo> getSkuByPage(Long page,Long limit);
+
+    void onSale(Long skuId);
+
+    void cancelSale(Long skuId);
+
+    SkuInfo getSkuInfo(Long skuId);
+
+    BaseCategoryView getCategoryViewByCategory3Id(Long category3Id);
+
+    BigDecimal getSkuPrice(Long skuId);
+
+    List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId);
+
+    Map getSkuValueIdsMap(Long spuId);
 }

@@ -95,6 +95,30 @@ public class ManagerController {
         List<SpuSaleAttr> spuSaleAttrList = managerService.spuSaleAttrList(spuId);
         return Result.ok(spuSaleAttrList);
     }
+    //添加sku
+    @PostMapping("/saveSkuInfo")
+    public Result saveSkuInfo(@RequestBody SkuInfo skuInfo){
+        managerService.saveSkuInfo(skuInfo);
+        return Result.ok();
+    }
+    //获取sku分页列表
+    @GetMapping("/list/{page}/{limit}")
+    public Result getSkuByPage(@PathVariable("page") Long page, @PathVariable("limit") Long limit){
+        IPage<SkuInfo> p = managerService.getSkuByPage(page,limit);
+        return Result.ok(p);
+    }
+
+    //商品的上下架
+    @GetMapping("onSale/{skuId}")
+    public Result onSale(@PathVariable("skuId")Long skuId){
+        managerService.onSale(skuId);
+        return Result.ok();
+    }
+    @GetMapping("cancelSale/{skuId}")
+    public Result cancelSale(@PathVariable("skuId")Long skuId){
+        managerService.cancelSale(skuId);
+        return Result.ok();
+    }
 }
 
 
