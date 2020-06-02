@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -230,6 +231,11 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Map getSkuValueIdsMap(Long spuId) {
-        return skuSaleAttrValueMapper.getSkuValueIdsMap(spuId);
+        Map result = new HashMap();
+        List<Map> skuValueIdsMap = skuSaleAttrValueMapper.getSkuValueIdsMap(spuId);
+        for (Map map : skuValueIdsMap) {
+            result.put(map.get("value_ids"), map.get("sku_id"));
+        }
+        return result;
     }
 }

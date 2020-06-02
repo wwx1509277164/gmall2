@@ -7,14 +7,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmall-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/service/ManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/service/ManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/service/impl/ManagerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/java/com/atguigu/gmall/product/service/impl/ManagerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/resources/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/resources/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/controller/ManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmall-parent/server-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/server-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmall-parent/server-gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/server-gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmall-parent/service-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SkuSaleAttrValueMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SkuSaleAttrValueMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/mapper/SpuSaleAttrMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/service/ManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/service/ManagerService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/service/impl/ManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-parent/service/service-product/target/classes/com/atguigu/gmall/product/service/impl/ManagerServiceImpl.class" afterDir="false" />
     </list>
@@ -68,23 +66,24 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gmall-parent/service/service-product/src/main/resources/com/atguigu/gmall/product/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gmall-parent/web/web-all/src/main/resources" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\service\service-product\src\main\resources\com\atguigu\gmall\product\mapper" />
-      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\model\src\main\java" />
-      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\common\service-util\src\main\java" />
-      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\common\common-util\src\main\java" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.atguigu.gmall.product.mapper" />
       <recent name="com.atguigu.gmall.item.service" />
       <recent name="com.atguigu.gmall.product.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\web\web-all\src\main\resources" />
+      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\service\service-product\src\main\resources\com\atguigu\gmall\product\mapper" />
+      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\model\src\main\java" />
+      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\common\service-util\src\main\java" />
+      <recent name="D:\Mywork\workspaces\gmall2\gmall-parent\common\common-util\src\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -104,7 +103,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServerGatewayApplication">
+  <component name="RunManager" selected="Spring Boot.WebAllApplication">
     <configuration name="ServerGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="server-gateway" />
       <extension name="coverage">
@@ -118,9 +117,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServiceItemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="service-item" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.gmall.item.ServiceItemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-product" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.gmall.product.ServiceProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebAllApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="web-all" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.gmall.all.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.gmall.all.WebAllApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -312,6 +331,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.WebAllApplication" />
         <item itemvalue="Spring Boot.ServerGatewayApplication" />
       </list>
     </recent_temporary>
@@ -319,9 +339,19 @@
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
-        <option name="contentProportion" value="0.14412569" />
+        <option name="contentProportion" value="0.20765027" />
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@6704648" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@6704648" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@e114430f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -342,7 +372,8 @@
       <workItem from="1590660443549" duration="14192000" />
       <workItem from="1590737668859" duration="2651000" />
       <workItem from="1590744372466" duration="2076000" />
-      <workItem from="1590756456545" duration="6456000" />
+      <workItem from="1590756456545" duration="6640000" />
+      <workItem from="1591105674507" duration="1928000" />
     </task>
     <task id="LOCAL-00001" summary="修改忽略文件">
       <created>1590450769037</created>
@@ -372,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590712569016</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="页面五大数据的查询">
+      <created>1590798518393</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1590798518393</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,6 +434,7 @@
     <MESSAGE value="开始搭建工程" />
     <MESSAGE value="三级分类的查询" />
     <MESSAGE value="spu的保存和sku的查询" />
-    <option name="LAST_COMMIT_MESSAGE" value="spu的保存和sku的查询" />
+    <MESSAGE value="页面五大数据的查询" />
+    <option name="LAST_COMMIT_MESSAGE" value="页面五大数据的查询" />
   </component>
 </project>

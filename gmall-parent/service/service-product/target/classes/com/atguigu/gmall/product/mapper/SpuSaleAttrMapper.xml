@@ -5,7 +5,7 @@
     <resultMap id="spuSaleAttrListMap" type="SpuSaleAttr">
         <id column="id" property="id"></id>
         <collection property="spuSaleAttrValueList" ofType="SpuSaleAttrValue">
-            <id property="id" column=""></id>
+            <id property="id" column="vid"></id>
         </collection>
     </resultMap>
     <select id="spuSaleAttrList" resultMap="spuSaleAttrListMap">
@@ -19,5 +19,21 @@
         FROM spu_sale_attr ssa
         INNER JOIN spu_sale_attr_value ssav ON ssa.id = ssav.base_sale_attr_id AND ssa.spu_id = ssav.spu_id
         WHERE ssa.spu_id =#{spuId}
+    </select>
+
+    <!--List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId);-->
+    <select id="getSpuSaleAttrListCheckBySku" resultMap="spuSaleAttrListMap">
+        SELECT
+                ssa.id,
+                ssa.spu_id,
+                ssa.base_sale_attr_id,
+                ssa.sale_attr_name,
+                ssav.id vid,
+                ssav.sale_attr_value_name,
+                if(ssavk.sku_id is null,0,1) is_checked
+        FROM spu_sale_attr ssa INNER JOIN spu_sale_attr_value ssav ON ssa.id = ssav.base_sale_attr_id and ssa.spu_id = ssav.spu_id
+        LEFT JOIN sku_sale_attr_value ssavk ON ssavk.sku_id =#{skuId} AND ssavk.sale_attr_value_id = ssav.id
+        WHERE ssa.spu_id=#{spuId}
+        ORDER BY ssa.base_sale_attr_id,ssav.id
     </select>
 </mapper>
